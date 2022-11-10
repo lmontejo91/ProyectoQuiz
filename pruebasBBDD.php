@@ -37,7 +37,7 @@
             echo "<label for='respuesta4'>'".array_keys($respuestas)[3]."'</label>";
         echo "</form>"; */
 
-        $pregunta = "¿Quién mató a Dobby?";
+        /* $pregunta = "¿Quién mató a Dobby?";
         $respuestas = ["Lucius Malfoy", "Fenrir Greyback", "Bellatrix Lestrange", "Alecto Carrow"];    
         echo "<h2>".$pregunta."</h2>";
         echo "<form>";
@@ -45,7 +45,83 @@
             echo "<input type='button' value='".$respuestas[1]."'/>";
             echo "<input type='button' value='".$respuestas[2]."'/>";
             echo "<input type='button' value='".$respuestas[3]."'/>";
-        echo "</form>";
+        echo "</form>"; */
+
+
+
+
+
+
+       /*  $numeroRepetido = true;
+        $_SESSION['preguntasRandom'] = array();
+        $numero;
+  
+        if(count($_SESSION['preguntasRandom']) < 10){
+  
+        //echo "Entra IF<br>";
+          do{
+              $numero = rand(1,41);
+              //echo $numero;
+              echo "<br>";
+              if (!in_array($numero, $_SESSION['preguntasRandom'])) {
+                $_SESSION['preguntasRandom'][] = $numero;
+                $numeroRepetido = false;
+              }
+              print_r($_SESSION['preguntasRandom']);
+          }while ($numeroRepetido == true);
+          
+          echo "<br>Final array -->";
+          print_r($_SESSION['preguntasRandom']);
+
+        }else{
+            echo "JUEGO TERMINADO";
+            unset($_SESSION['preguntasRandom']);
+        } */
 
 
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicios Clase: JSON</title>
+</head>
+<body>
+
+    <?php
+        echo "<h2>Lo que sea</h2>";
+        echo "<form name='formulario_Button' action='".$_SERVER['PHP_SELF']."' method='POST'>";
+                echo "<input type='button' name='boton2' value='hola' onclick='asignarValue()'/>";
+                echo "<input type='button' name='boton1' value='HOLA' onclick='asignarValue()'/>";
+                echo "<input type='hidden' id='custId' name='custId' value=''/>";
+            echo "<br><input type='submit' name='enviarPregunta' value='Envia'/>";
+        echo "</form>";
+
+        if(isset($_POST['enviarPregunta'])){
+            //echo $_POST['formulario_Button'];
+            echo $_POST['enviarPregunta'];
+            //echo $_POST['boton2'];
+            //echo $_POST['boton1'];
+            echo "<br>xxx<br>";
+            echo $_POST['custId'];
+        }    
+    //onclick='asignarValue()
+    ?>
+
+</body>
+<script>
+    /* window.onload = () => window.addEventListener('click', event => {
+        let valorMarcado = event.target.value;
+        console.log(valorMarcado);
+        document.getElementById('custId').value=valorMarcado;
+        console.log(document.getElementById('custId').value);
+    }); */
+
+
+    function asignarValue(){
+        let valorMarcado = event.target.value;
+        //console.log(valorMarcado);
+        document.getElementById('custId').value=valorMarcado;
+    }    
+
+</script>
+</html>

@@ -1,48 +1,74 @@
 <?php
     session_start();
 
-    $arrayPreguntas = array();
+    if (!($_SERVER["REQUEST_METHOD"] == "POST")){
+      $_SESSION['preguntasRandom'] = array();
+    }
 
-    do{
-        array_push($arrayPreguntas, rand(1,41));
-        $arrayPreguntas = array_unique($arrayPreguntas);
-    }while (count($arrayPreguntas) < 10);
+    if (($_SERVER["REQUEST_METHOD"] == "POST")){
+      if (isset($_POST['enviarPregunta'])){
 
-    //print_r($arrayPreguntas);
+      }
+    }
+
+    $numeroRepetido = true;
+    $numero;
+
+    if(count($_SESSION['preguntasRandom']) < 10){
+
+    //echo "Entra IF<br>";
+      do{
+          $numero = rand(1,41);
+          /* echo $numero;
+          echo "<br>"; */
+          if (!in_array($numero, $_SESSION['preguntasRandom'])) {
+            array_push($_SESSION['preguntasRandom'], $numero);
+            $numeroRepetido = false;
+          }
+      }while ($numeroRepetido == true);
+         
+
+    
 
     include 'proyectoQuiz_crearConexion.php';
-    foreach($arrayPreguntas as $pregunta){
-        $result = $conn->query("SELECT categoria FROM preguntas WHERE preguntaID = $pregunta")->fetch();
+    //foreach($_SESSION['preguntasRandom'] as $pregunta){
+        $result = $conn->query("SELECT categoria FROM preguntas WHERE preguntaID = $numero")->fetch();
         switch ($result['categoria']) {
             case 'radio':
-                setcookie('categoriaPregunta', 'radio');
-                setcookie('n_pregunta', $pregunta);
+                $_SESSION['categoriaPregunta'] = 'radio';
+                $_SESSION['n_pregunta'] = $numero;
                 header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_preguntasRADIO.php');
               break;
             case 'checkbox':
-                setcookie('categoriaPregunta', 'checkbox');
-                setcookie('n_pregunta', $pregunta);
+              $_SESSION['categoriaPregunta'] = 'checkbox';
+              $_SESSION['n_pregunta'] = $numero;
                 header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_preguntasCHECKBOX.php');
               break;
             case 'text':
-                setcookie('categoriaPregunta', 'text');
-                setcookie('n_pregunta', $pregunta);
+              $_SESSION['categoriaPregunta'] = 'text';
+              $_SESSION['n_pregunta'] = $numero;
                 header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_preguntasTEXT.php');
               break;
             case 'button':
-                setcookie('categoriaPregunta', 'button');
-                setcookie('n_pregunta', $pregunta);
+              $_SESSION['categoriaPregunta'] = 'button';
+              $_SESSION['n_pregunta'] = $numero;
                 header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_preguntasBUTTON.php');
                 break;
             case 'select':
-                setcookie('categoriaPregunta', 'select');
-                setcookie('n_pregunta', $pregunta);
+                $_SESSION['categoriaPregunta'] = 'select';
+                $_SESSION['n_pregunta'] = $numero;
                 header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_preguntasSELECT.php');
                 break;
             default:
               echo "Error";
           }
         
-    }
+    //}
+
+  }else{
+    echo "JUEGO FINALIZADO";
+  }
+
+    //unset($_SESSION["preguntasRandom"])
     
 ?>

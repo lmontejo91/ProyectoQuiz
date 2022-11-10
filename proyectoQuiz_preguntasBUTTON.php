@@ -11,11 +11,11 @@
     
     <?php
         
-        if(!isset($_COOKIE[$categoriaPregunta]) || !isset($_COOKIE[$n_pregunta])) {
+        if(!isset($_SESSION['categoriaPregunta']) || !isset($_SESSION['n_pregunta'])) {
             echo "ERROR";
             //Aquí luego poner header que te redirija.
         }
-
+        print_r($_SESSION['preguntasRandom']);
         //Declaración de Variables
         $pregunta;
         $respuestas = [];
@@ -23,14 +23,11 @@
         //Incluimos el código que crea la conexión 
         include 'proyectoQuiz_crearConexion.php';
 
-        $pregunta = ($conn->query("SELECT pregunta FROM preguntas WHERE preguntaID=$_COOKIE[n_pregunta]")->fetch())['pregunta'];
-        $data = $conn->query("SELECT respuesta FROM preguntas WHERE preguntaID=$_COOKIE[n_pregunta]")->fetchAll();
+        $pregunta = ($conn->query("SELECT pregunta FROM preguntas WHERE preguntaID=$_SESSION[n_pregunta]")->fetch())['pregunta'];
+        $data = $conn->query("SELECT respuesta FROM respuestas WHERE preguntaID=$_SESSION[n_pregunta]")->fetchAll();
 
         foreach ($data as $row) {
-
-            foreach($respuestas as $opcion){
-                $opcion = $row['respuesta'];
-            }
+            $respuestas[] = $row['respuesta'];
         }
 
         
@@ -39,7 +36,7 @@
             foreach($respuestas as $respuesta){
                 echo "<input type='button' value='".$respuesta."'/>";
             }
-            echo "<input type='submit' value='Siguiente'/>";
+            echo "<br><input type='submit' name='enviarPregunta' value='Siguiente'/>";
         echo "</form>";
         
 
