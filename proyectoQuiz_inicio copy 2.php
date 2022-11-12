@@ -18,14 +18,14 @@
     </form> -->
 
 
-    <section class="vh-100">
+    <section class="vh-100" style="background-image: url('./images/seamless-pattern.webp'); height:100%">
     <!-- DIV Contenedor -->
     <div class="container-fluid h-100 row d-flex justify-content-center align-items-center">
         <!-- <div class="row d-flex justify-content-center align-items-center h-100"> -->
 
         <!-- DIV Imagen -->
         <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="./images/castillo_colores3.jpg" 
+            <img src="./images/Harry-Potter-Transparent-Image.png" 
             class="img-fluid" alt="Sample image">
         </div>
 

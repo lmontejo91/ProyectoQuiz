@@ -17,6 +17,7 @@
         }
 
         print_r($_SESSION['preguntasRandom']);
+        print_r($_SESSION['puntuacionTotal']);
         //Declaración de Variables
         $pregunta;
         $respuestas = [];
@@ -24,14 +25,19 @@
         //Incluimos el código que crea la conexión 
         include 'proyectoQuiz_crearConexion.php';
 
-        $pregunta = ($conn->query("SELECT pregunta FROM preguntas WHERE preguntaID=$_SESSION[n_pregunta]")->fetch())['pregunta'];
-        $data = ($conn->query("SELECT respuesta, acierto FROM respuestas WHERE preguntaID=$_SESSION[n_pregunta]"))->fetchAll();
+        $pregunta = $conn->query("SELECT pregunta, puntos FROM preguntas WHERE preguntaID=$_SESSION[n_pregunta]")->fetch();
+        $data = $conn->query("SELECT respuesta, acierto FROM respuestas WHERE preguntaID=$_SESSION[n_pregunta]")->fetchAll();
 
+        $_SESSION['puntosPregunta'] = $pregunta['puntos'];
+        echo $_SESSION['puntosPregunta'];
         foreach ($data as $row) {
-            $respuestas[$row['respuesta']] = $row['acierto'];    
+            $respuestas[$row['respuesta']] = $row['acierto'];
+            if($row['acierto'] == "1"){
+                $_SESSION['respuesta_correcta'] = $row['respuesta'];
+            }    
         }
         
-        echo "<h2>".$pregunta."</h2>";
+        echo "<h2>".$pregunta['pregunta']."</h2>";
         echo "<form name='formulario_Radio' action='./proyectoQuiz_jugar.php' method='POST'>";
             echo "<input type='radio' id='respuesta1' name='preguntaForm_radio' value='".array_values($respuestas)[0]."'/>";
             echo "<label for='respuesta1'>'".array_keys($respuestas)[0]."'</label><br>";
@@ -41,7 +47,7 @@
             echo "<label for='respuesta3'>'".array_keys($respuestas)[2]."'</label><br>";
             echo "<input type='radio' id='respuesta4' name='preguntaForm_radio' value='".array_values($respuestas)[3]."'/>";
             echo "<label for='respuesta4'>'".array_keys($respuestas)[3]."'</label><br>";
-            echo "<input type='submit' name='enviarPregunta' value='Siguiente'/>";
+            echo "<input type='submit' name='enviarPregunta' value='Enviar'/>";
         echo "</form>";
         
 
@@ -51,3 +57,14 @@
 
 </body>
 </html>
+
+
+        <!-- <div class="col-md-12 col-lg-12 col-xl-12">
+            <div class="col-md-1 col-lg-2 col-xl-2">
+                <img src="./images/corner-left.png" 
+                class="img-fluid" alt="Sample image" width="75%">
+            </div> 
+        </div> -->
+
+
+        <!-- https://mdbootstrap.com/docs/standard/components/progress/ -->

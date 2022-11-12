@@ -18,19 +18,19 @@
     </form> -->
 
 
-    <section class="vh-100">
+    <section class="vh-100 bg-dark">
     <!-- DIV Contenedor -->
     <div class="container-fluid h-100 row d-flex justify-content-center align-items-center">
         <!-- <div class="row d-flex justify-content-center align-items-center h-100"> -->
 
         <!-- DIV Imagen -->
         <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="./images/castillo_colores3.jpg" 
+            <img src="./images/escudo.png" 
             class="img-fluid" alt="Sample image">
         </div>
 
         <!-- DIV Formulario -->
-        <div class="col-md-6 col-lg-5 col-xl-3 offset-xl-1">
+        <div class="col-md-6 col-lg-5 col-xl-4 offset-xl-1 bg-white px-5 pb-4">
             <form name='form_ProyectoQuiz' action='proyectoQuiz_login' method='POST'>
     
 
@@ -85,7 +85,7 @@
 
     <!-- DIV Footer -->
     <div
-        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-info bg-opacity-50">
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-warning">
         <!-- Copyright -->
         <div class="text-white mb-3 mb-md-0">
         Copyright © 2020. All rights reserved.
