@@ -1,10 +1,18 @@
 <?php
     session_start();
 
+    function limpiarDatos($data){
+        $data=trim($data);
+        $data=stripslashes($data);
+        $data=htmlspecialchars($data);
+        return $data;
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        include 'proyectoQuiz_crearConexion.php';
+        //include 'proyectoQuiz_crearConexion.php';
 
+        $_SESSION['origen'] = "login";
         $userName_POST = limpiarDatos($_POST['userName']);
         $password_POST = limpiarDatos($_POST['password']);
 
@@ -32,47 +40,53 @@
             }
 
 
-            function buscarUsuario(){
-                include 'proyectoQuiz_crearConexion.php';
-                global $userName_POST, $password_POST;
-
-                $sql_getData = "SELECT nombre, contrasena FROM jugadores";
-                $result_getData = $conn->query($sql_getData)->fetchAll();
-
-                foreach($result_getData as $row){
-                    if($row["nombre"] == $userName_POST && $row["contrasena"] == $password_POST){
-                        $_SESSION['userName'] = $userName_POST;
-                        $_SESSION['password'] = $password_POST;
-                        $_SESSION['loggedIn'] = true;
-                        return true;
-                    }
-                }
-        
-                return false;
-            }
             
-            function anadirUsuario(){
-                include 'proyectoQuiz_crearConexion.php';
-                global $userName_POST, $password_POST;
-
-                if(!(buscarUsuario())){
-                    $sql_addUser = "INSERT INTO Jugadores (nombre, contrasena) VALUES ($userName_POST, $password_POST)";
-                    if($conn->query($sql_addUser) === true){
-                        return true;
-                    }
-                }
-                return false;
-            }
             
-
-            function limpiarDatos($data){
-                $data=trim($data);
-                $data=stripslashes($data);
-                $data=htmlspecialchars($data);
-                return $data;
-            }
         
+    }else{
+        header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_inicio.php');
     }
 
+    function buscarUsuario(){
+        include 'proyectoQuiz_crearConexion.php';
+        global $userName_POST, $password_POST;
+
+        $usuario = $conn->query("SELECT nombre, contrasena FROM jugadores WHERE nombre='$userName_POST'")->fetch();
+
+        if($usuario){
+            if($usuario["nombre"] == $userName_POST && $usuario["contrasena"] == $password_POST){
+                $_SESSION['userName'] = $userName_POST;
+                $_SESSION['password'] = $password_POST;
+                $_SESSION['loggedIn'] = true;
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    function anadirUsuario(){
+        include 'proyectoQuiz_crearConexion.php';
+        global $userName_POST, $password_POST;
+
+        if($_FILES['profilePhoto']['size'] == 0){
+            $file = null;
+        }else{
+            $file = $_FILES['profilePhoto']['name'];
+            move_uploaded_file($_FILES['profilePhoto']['tmp_name'], "./uploads");
+        }
+
+        if(!(buscarUsuario())){
+            $sql_addUser = "INSERT INTO jugadores (nombre, contrasena, fotoPerfil) VALUES ('$userName_POST', '$password_POST', '$file')";
+
+            if($conn->query($sql_addUser)){
+                $_SESSION['userName'] = $userName_POST;
+                $_SESSION['password'] = $password_POST;
+                $_SESSION['loggedIn'] = true;
+                return true;
+            }
+        }
+        return false;
+    }
     
 ?>

@@ -21,3 +21,26 @@ https://ahaslides.com/es/blog/40-harry-potter-quiz-questions-and-answers/
 https://psycatgames.com/es/magazine/party-games/harry-potter-trivia/
 
 https://www.zoo.com/quiz/can-you-correctly-answer-these-easy-medium-hard-harry-potter-questions-sp-zoo
+
+
+
+
+- MEZCLAR HTML Y PHP -
+
+https://www.devservice.es/blog/como-insertar-codigo-html-en-php/
+
+https://styde.net/como-combinar-html-y-php/
+
+
+- $_FILES -
+
+https://www.geeksforgeeks.org/how-to-upload-image-into-database-and-display-it-using-php/
+
+
+- REMEMBER ME -
+
+https://www.phptutorial.net/php-tutorial/php-remember-me/
+
+https://phpgurukul.com/php-login-with-remember-me-function/
+
+https://phppot.com/php/secure-remember-me-for-login-using-php-session-and-cookies/

@@ -17,8 +17,9 @@
         <input type='submit' value='Registrar' name='evento_RegistrarUsuario'>
     </form> -->
 
+    <!-- style="background-image: url('./images/seamless-pattern.webp'); height:100%" -->
 
-    <section class="vh-100" style="background-image: url('./images/seamless-pattern.webp'); height:100%">
+    <section class="vh-100">
     <!-- DIV Contenedor -->
     <div class="container-fluid h-100 row d-flex justify-content-center align-items-center">
         <!-- <div class="row d-flex justify-content-center align-items-center h-100"> -->

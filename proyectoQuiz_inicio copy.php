@@ -65,7 +65,7 @@
 
             <!-- Input Entrar (botón) -->
             <div class="text-center text-lg-start mt-4 pt-3">
-                <input type='submit' value='Entrar' name='evento_LogIn' class="btn btn-primary btn-lg">
+                <input type='submit' value='Entrar' name='evento_LogIn' class="btn btn-danger btn-lg">
             </div>
 
             <!-- Input Registrarse (botón) -->
@@ -85,7 +85,7 @@
 
     <!-- DIV Footer -->
     <div
-        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-warning">
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-success">
         <!-- Copyright -->
         <div class="text-white mb-3 mb-md-0">
         Copyright © 2020. All rights reserved.

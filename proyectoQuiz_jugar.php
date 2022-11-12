@@ -91,7 +91,7 @@
       
   }else{
     
-
+    $_SESSION['origen'] = "jugar";
     echo "JUEGO FINALIZADO";
     unset($_SESSION['preguntasRandom']);
     unset($_SESSION['puntuacionTotal']);

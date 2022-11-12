@@ -1,0 +1,26 @@
+/* @import url('https://fonts.cdnfonts.com/css/harry-potter');
+
+#parrafo_HP{
+    font-family: 'Harry Potter', sans-serif;
+} */
+
+.divider:after,.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 23px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+}

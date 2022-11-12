@@ -21,12 +21,12 @@
     /* $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
     echo $age[0]; */
 
-
-    /*$pregunta = "¿Quién mató a Dobby?";
+    /* //FORM RADIO
+    $pregunta = "¿Quién mató a Dobby?";
     $respuestas = ["Lucius Malfoy"=>0, "Fenrir Greyback"=>0, "Bellatrix Lestrange"=>1, "Alecto Carrow"=>0];
 
      echo "<h2>".$pregunta."</h2>";
-        echo "<form>";
+        echo "<form name='formulario_Radio' action='".$_SERVER['PHP_SELF']."' method='POST'>";
             echo "<input type='radio' id='respuesta1' name='preguntaForm_radio' value='".array_values($respuestas)[0]."'/>";
             echo "<label for='respuesta1'>'".array_keys($respuestas)[0]."'</label><br>";
             echo "<input type='radio' id='respuesta2' name='preguntaForm_radio' value='".array_values($respuestas)[1]."'/>";
@@ -35,7 +35,90 @@
             echo "<label for='respuesta3'>'".array_keys($respuestas)[2]."'</label><br>";
             echo "<input type='radio' id='respuesta4' name='preguntaForm_radio' value='".array_values($respuestas)[3]."'/>";
             echo "<label for='respuesta4'>'".array_keys($respuestas)[3]."'</label>";
-        echo "</form>"; */
+            echo "<input type='submit' name='enviarPregunta' value='Siguiente'/>";
+        echo "</form>";
+
+    if(isset($_POST['enviarPregunta'])){
+        if(isset($_POST['preguntaForm_radio'])){
+            echo $_POST['enviarPregunta'];
+            echo "<br>xxx<br>";
+           // print_r($_POST['formulario_Radio']);
+            print_r($_POST['preguntaForm_radio']);
+            echo gettype($_POST['preguntaForm_radio']);
+            echo "<br>";
+            echo gettype((int)$_POST['preguntaForm_radio']);
+            echo "<br>";
+            echo "<br>xxx<br>";
+            if(!empty($_POST['preguntaForm_radio'])){
+                echo "entra";
+            }else{
+                echo "no entra";
+            }
+        }
+    } 
+
+    //FORM SELECT
+    echo "<form name='formulario_Select' action='".$_SERVER['PHP_SELF']."' method='POST'>";
+        echo "<label for='cars'>Choose a car:</label>";
+
+        echo "<select name='cars' id='cars'>";
+        echo "<option value='1'>Volvo</option>";
+        echo "<option value='0'>Saab</option>";
+        echo "<option value='0'>Mercedes</option>";
+        echo "<option value='0'>Audi</option>";
+        echo "</select>";
+        echo "<br><input type='submit' name='enviarPregunta' value='Siguiente'/>";
+    echo "</form>";
+
+    if(isset($_POST['enviarPregunta'])){
+        if(isset($_POST['cars'])){
+            echo $_POST['enviarPregunta'];
+            echo "<br>xxx<br>";
+            print_r($_POST['cars']);
+            echo "<br>xxx<br>";
+            if(!empty($_POST['cars'])){
+                echo "entra";
+            }else{
+                echo "no entra";
+            }
+        }
+    } 
+
+    //FORM CHECKBOX
+    $pregunta = "¿Quién mató a Dobby?";
+    $respuestas = ["Capa de Invisibilidad"=>1, "Varita de Saúco"=>1, "Diadema de Ravenclaw"=>0, "Piedra de resurrección"=>1, "Diario de Tom Riddle"=>0];
+
+     echo "<h2>".$pregunta."</h2>";
+        echo "<form name='formulario_checkbox' action='".$_SERVER['PHP_SELF']."' method='POST'>";
+            echo "<input type='checkbox' id='respuesta1' name='preguntaForm_checkbox[]' value='".array_values($respuestas)[0]."'/>";
+            echo "<label for='respuesta1'>'".array_keys($respuestas)[0]."'</label><br>";
+            echo "<input type='checkbox' id='respuesta2' name='preguntaForm_checkbox[]' value='".array_values($respuestas)[1]."'/>";
+            echo "<label for='respuesta2'>'".array_keys($respuestas)[1]."'</label><br>";
+            echo "<input type='checkbox' id='respuesta3' name='preguntaForm_checkbox[]' value='".array_values($respuestas)[2]."'/>";
+            echo "<label for='respuesta3'>'".array_keys($respuestas)[2]."'</label><br>";
+            echo "<input type='checkbox' id='respuesta4' name='preguntaForm_checkbox[]' value='".array_values($respuestas)[3]."'/>";
+            echo "<label for='respuesta4'>'".array_keys($respuestas)[3]."'</label><br>";
+            echo "<input type='checkbox' id='respuesta5' name='preguntaForm_checkbox[]' value='".array_values($respuestas)[4]."'/>";
+            echo "<label for='respuesta5'>'".array_keys($respuestas)[4]."'</label><br>";
+            echo "<input type='submit' name='enviarPregunta' value='Siguiente'/>";
+        echo "</form>";
+
+    if(isset($_POST['enviarPregunta'])){
+        if(isset($_POST['preguntaForm_checkbox'])){
+            echo $_POST['enviarPregunta'];
+            echo "<br>xxx<br>";
+            //print_r($_POST['formulario_checkbox']);
+            print_r($_POST['preguntaForm_checkbox']);
+            echo "<br>xxx<br>";
+            var_dump($_POST['preguntaForm_checkbox']);
+            if(!empty($_POST['preguntaForm_checkbox'])){
+                echo "entra";
+            }else{
+                echo "no entra";
+            }
+        }
+    }  */
+
 
         /* $pregunta = "¿Quién mató a Dobby?";
         $respuestas = ["Lucius Malfoy", "Fenrir Greyback", "Bellatrix Lestrange", "Alecto Carrow"];    
@@ -78,50 +161,79 @@
             unset($_SESSION['preguntasRandom']);
         } */
 
+$n1 = "hola";
+$n2 = "hola";
+$n3 = "hola";
+$n4 = "hola";
 
 ?>
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>mostrar Estadísticas</title>
+</head>
+<body>
+    
+<div class="container">
+    <table class='class="table align-middle mb-0 bg-white"'>
+        <thead class="bg-light">
+            <tr>
+                <th></th>
+                <th>Jugador</th>
+                <th>Nivel</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>hola</td>
+                <td>hola</td>
+                <td>hola</td>
+                <td>hola</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Ejercicios Clase: JSON</title>
 </head>
 <body>
 
-    <?php
+    php
         echo "<h2>Lo que sea</h2>";
         echo "<form name='formulario_Button' action='".$_SERVER['PHP_SELF']."' method='POST'>";
-                echo "<input type='button' name='boton2' value='hola' onclick='asignarValue()'/>";
-                echo "<input type='button' name='boton1' value='HOLA' onclick='asignarValue()'/>";
+                echo "<input type='button' class='0' name='boton2' value='hola' onclick='asignarValue()'/>";
+                echo "<input type='button' class='1' name='boton1' value='HOLA' onclick='asignarValue()'/>";
                 echo "<input type='hidden' id='custId' name='custId' value=''/>";
             echo "<br><input type='submit' name='enviarPregunta' value='Envia'/>";
         echo "</form>";
 
         if(isset($_POST['enviarPregunta'])){
-            //echo $_POST['formulario_Button'];
             echo $_POST['enviarPregunta'];
-            //echo $_POST['boton2'];
-            //echo $_POST['boton1'];
             echo "<br>xxx<br>";
             echo $_POST['custId'];
         }    
-    //onclick='asignarValue()
     ?>
 
 </body>
 <script>
-    /* window.onload = () => window.addEventListener('click', event => {
-        let valorMarcado = event.target.value;
+    function asignarValue(){
+        let valorMarcado = event.target.className;
+        console.log(event.target.name);
+        event.target.style.borderStyle='outset';
         console.log(valorMarcado);
         document.getElementById('custId').value=valorMarcado;
-        console.log(document.getElementById('custId').value);
-    }); */
-
-
-    function asignarValue(){
-        let valorMarcado = event.target.value;
-        //console.log(valorMarcado);
-        document.getElementById('custId').value=valorMarcado;
     }    
-
 </script>
 </html>
+ -->

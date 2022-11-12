@@ -1,7 +1,7 @@
 <?php
-     $servername = "10.230.108.80";
-     $username = "lucia";
-     $password = "O3775AmD?";
+     $servername = "localhost";
+     $username = "root";
+     $password = "root";
 
      // Create and check connection
      try {
