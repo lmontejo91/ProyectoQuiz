@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.scss">
+    <link rel="stylesheet" href="./styleCSS.css">
+    <!-- <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet"> -->
     <title>proyectoQuiz_inicio</title>
 </head>
 <body>
@@ -24,9 +24,9 @@
     <div class="container-fluid h-100 row d-flex justify-content-center align-items-center">
 
         <!-- DIV Imagen -->
-        <div class="col-md-9 col-lg-6 col-xl-5">
-            <p id="parrafo_HP" style="font-family: 'Harry Potter'; font-weight: bolder; font-size: 500%; color: #efb810">Harry Potter<p>
-            <p class="text-center" style="font-family: 'Harry Potter'; font-weight: bolder; font-size: 250%; color:#D4AF37">The Ultimate Game<p>
+        <div class="col-md-9 col-lg-6 col-xl-5 hp-font fs-1">
+            <p id="title_HP">Harry Potter<p>
+            <p id="subtitle_HP">The Ultimate Game<p>
         </div>
         
         <!-- DIV Formulario -->
@@ -65,14 +65,13 @@
 
             <!-- Input Entrar (botón) -->
             <div class="text-center text-lg-start mt-4 pt-3">
-                <input type='submit' value='Entrar' name='evento_LogIn' class="btn btn-success btn-lg">
+                <input type='submit' value='Alohomora' name='evento_LogIn' class="btn btn-success btn-lg">
             </div>
 
             <!-- Input Registrarse (botón) -->
             <div class="d-flex align-items-center justify-content-center pb-4 pt-5">
                     <p class="mb-0 me-2">¿Aún no tienes una cuenta?</p>
-                    <input type='submit' value='Registrar' name='evento_RegistrarUsuario' class="btn btn-outline-success ms-2">
-                    <!-- Create new</button> -->
+                    <input type='submit' value='Matriculate en Hogwarts' name='evento_RegistrarUsuario' class="btn btn-outline-success ms-2">
             </div>
 
              <!-- Input profilePhoto (botón) -->
