@@ -1,0 +1,50 @@
+/* CUSTOM MARGIN */
+.mt-6{
+    margin-top: 5rem;
+}
+
+.mt-7{
+    margin-top: 7rem;
+}
+
+.mx-7{
+    margin-left: 7rem;
+    margin-right: 7rem;
+}
+
+/* CUSTOM PADDING */
+.px-6{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+
+/* ESTILO Área Personal */
+
+
+
+/* ESTILO Ranking */
+/* #bddac9  */
+.bg-ranking{
+    background-color: rgb(234, 234, 233);
+}
+
+.badge-auror {
+    background-color: #d6f0e0;
+    color: #0d6832;
+}
+
+.badge-wizard {
+    background-color: #dfe7f6;
+    color: #2c58a0;
+}
+
+.badge-troll {
+    background-color: #fbf0da;
+    color: #73510d;
+}
+
+.badge-muggle {
+    background-color: #f9c0c0;
+    color: #73140d;
+}

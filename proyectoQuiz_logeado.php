@@ -31,7 +31,7 @@
             
     
             //BOTONES MostrarEstadísticas & Jugar
-            echo "<a href='http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_mostrarEstadisticas.php'>
+            echo "<a href='http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_ranking.php'>
                 <button>Mostrar Estadísticas</button>
             </a>";
     

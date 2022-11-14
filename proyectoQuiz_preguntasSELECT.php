@@ -47,5 +47,25 @@
 
     ?>
 
+    <section class="vh-100 bg-image" style="background-image: url('./images/Marauders-Map_BUENA.jpg'); height:100%">
+        
+        <!-- DIV Contenedor -->
+        <div class="h-100 row d-flex justify-content-center align-items-center">
+            
+            
+            
+        </div>
+
+        <!-- DIV Footer -->
+        <div
+            class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark">
+            <!-- Copyright -->
+            <div class="text-light mb-3 mb-md-0">
+            Copyright © 2020. All rights reserved.
+            </div>
+        </div>
+
+    </section>
+
 </body>
 </html>

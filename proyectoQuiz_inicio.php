@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.scss">
     <title>proyectoQuiz_inicio</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
     </form> -->
 
 
-    <section class="vh-100 bg-image" style="background-image: url('./images/comedor_oscuro04.jpg'); height:100%">
+    <section class="vh-100 bg-image" style="background-image: url('./images/comedor_oscuro_BUENA.jpg'); height:100%">
     <!-- DIV Contenedor -->
     <div class="container-fluid h-100 row d-flex justify-content-center align-items-center">
 
