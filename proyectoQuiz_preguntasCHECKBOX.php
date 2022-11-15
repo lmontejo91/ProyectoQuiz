@@ -16,7 +16,7 @@
         
         if(!isset($_SESSION['categoriaPregunta']) || !isset($_SESSION['n_pregunta'])) {
             echo "ERROR";
-            //Aquí luego poner header que te redirija.
+            header('Location: ./proyectoQuiz_inicio.php');
         }
         
         //Declaración de Variables
@@ -34,32 +34,11 @@
         $_SESSION['puntosPregunta'] = $pregunta['puntos'];
 
         $fotoPerfil_menu = $conn->query("SELECT fotoPerfil FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['fotoPerfil'];
-
-        //echo $_SESSION['puntosPregunta'];
-        /* foreach ($data as $row) {
-            $respuestas[] = $row['respuesta'];
-            if($row['acierto'] == "1"){
-                $_SESSION['contador_respCorrectas'] = $row['respuesta'];
-            }
-        } */
-
-        
-        /* echo "<h2>".$pregunta['pregunta']."</h2>";
-        echo "<form name='formulario_Checkbox' action='./proyectoQuiz_jugar.php' method='POST'>";
-            foreach($respuestas as $index => $respuesta){
-                echo "<input type='checkbox' id='respuesta".$index."' name='preguntaForm_checkbox' value='".$respuesta['acierto']."'/>";
-                echo "<label for='respuesta".$index."'>'".$respuesta['respuesta']."'</label><br>";
-                if($respuesta['acierto'] == "1"){
-                    $_SESSION['contador_respCorrectas']++;
-                }
-            }
-            echo "<input type='submit' name='enviarPregunta' value='Siguiente'/>";
-        echo "</form>"; */
    
     ?>
 
 
-    <section class="vh-100 bg-light">
+    <section class="vh-100 bg-image" style="background-image: url('./images/Marauders-Map.jpg'); height:100%">
         
         <!-- DIV Contenedor -->
         <div class="h-100 row d-flex justify-content-center align-items-center">
@@ -99,8 +78,8 @@
                     <form name='formulario_Checkbox' action='./proyectoQuiz_jugar.php' method='POST'>
 
                         <?php foreach ($respuestas as $index => $respuesta):?>
-                            <input type='checkbox' id='<?php echo "respuesta".$index ?>' name='preguntaForm_checkbox' value='<?php echo $respuesta['acierto'] ?>'/>";
-                            <label for='<?php echo "respuesta".$index ?>'><?php echo $respuesta['respuesta'] ?></label><br>";
+                            <input type='checkbox' id='<?php echo "respuesta".$index ?>' name='preguntaForm_checkbox[]' value='<?php echo $respuesta['acierto'] ?>'/>
+                            <label for='<?php echo "respuesta".$index ?>'><?php echo $respuesta['respuesta'] ?></label><br>
                             <?php if($respuesta['acierto'] == "1"):
                                 $_SESSION['contador_respCorrectas']++;
                             endif; ?>
@@ -112,8 +91,7 @@
 
                 </div>
             </div>
-            
-            
+                 
         </div>
 
         <!-- DIV Footer -->

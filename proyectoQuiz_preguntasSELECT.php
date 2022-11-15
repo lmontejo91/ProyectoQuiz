@@ -17,12 +17,9 @@
         
         if(!isset($_SESSION['categoriaPregunta']) || !isset($_SESSION['n_pregunta'])) {
             echo "ERROR";
-            //Aquí luego poner header que te redirija.
+            header('Location: ./proyectoQuiz_inicio.php');
         }
         
-        
-        /* print_r($_SESSION['preguntasRandom']);
-        print_r($_SESSION['puntuacionTotal']); */
         //Declaración de Variables
         $pregunta;
         $respuestas = [];
@@ -41,20 +38,9 @@
         
         $fotoPerfil_menu = $conn->query("SELECT fotoPerfil FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['fotoPerfil'];
 
-        /* echo "<h2>".$pregunta['pregunta']."</h2>";
-        echo "<form name='formulario_Select' action='./proyectoQuiz_jugar.php' method='POST'>";
-            echo "<select name='preguntaForm_select'>";
-                foreach ($respuestas as $respuesta => $valor){
-                    echo "<option value='$valor'>$respuesta</option>";
-                }  
-            echo "</select>";
-            echo "<br><input type='submit' name='enviarPregunta' value='Enviar'/>";
-        echo "</form>"; */
-
-
     ?>
 
-    <section class="vh-100 bg-light">
+    <section class="vh-100 bg-image" style="background-image: url('./images/Marauders-Map.jpg'); height:100%">
         
         <!-- DIV Contenedor -->
         <div class="h-100 row d-flex justify-content-center align-items-center">

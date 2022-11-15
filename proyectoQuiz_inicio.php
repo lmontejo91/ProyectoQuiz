@@ -22,9 +22,9 @@
         include 'proyectoQuiz_crearConexion.php';
 
         $puntuacion_ultimaPartida = $conn->query("SELECT puntuacion FROM partidas 
-                                                    WHERE nombre='cris' 
+                                                    WHERE nombre='".$_SESSION['userName']."' 
                                                         AND partidaID = (SELECT MAX(partidaID) FROM partidas 
-                                                                            WHERE nombre='cris')")->fetch()['puntuacion'];
+                                                                            WHERE nombre='".$_SESSION['userName']."')")->fetch();
 
         $datos_usuario = $conn->query("SELECT fotoPerfil, nivel FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch();
     
@@ -97,10 +97,10 @@
                 
                 <!-- DIV Resultado Jugar -->
                 <?php if($_SESSION['origen'] == "jugar"): ?>
-                    <div class="col-xs-5 col-sm-5 col-md-5 mx-7 d-flex justify-content-center align-items-center mb-5 bg-white rounded">
+                    <div class="mx-auto col-xs-5 col-sm-5 col-md-5 mx-7 d-flex justify-content-around align-items-center mb-5 bg-white rounded">
                         <div>
-                            <p>¡Enhorabuena <?php echo $_SESSION['userName'] ?>!</p>
-                            <p>Has conseguido<span class="d-block"><?php echo $puntuacion_ultimaPartida." puntos" ?></span></p>
+                            <p class="fs-2">¡Enhorabuena <?php echo $_SESSION['userName'] ?>!</p>
+                            <p class="f-5 text-center">Has conseguido<span class="d-block"><?php echo $puntuacion_ultimaPartida['puntuacion']." puntos" ?></span></p>
                         </div>
                         <div>
                             <?php if($datos_usuario['nivel'] == 'Troll'): ?>

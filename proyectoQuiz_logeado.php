@@ -17,23 +17,23 @@
                 echo "ENTRA login";
                 if(buscarUsuario()){
                     $conn = null;
-                    header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_inicio.php');
+                    header('Location: ./proyectoQuiz_inicio.php');
                 }else{
-                    header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_login.php');
+                    header('Location: ./proyectoQuiz_login.php');
                 }            
                 
             }elseif(isset($_POST["evento_RegistrarUsuario"])){
                 echo "ENTRA registrar";
                 if(anadirUsuario()){
-                    header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_inicio.php');
+                    header('Location: ./proyectoQuiz_inicio.php');
                 }else{
-                    header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_login.php');
+                    header('Location: ./proyectoQuiz_login.php');
                 }              
             }       
         
     }else{
         echo "ENTRA ELSE no POST";
-        header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_login.php');
+        header('Location: ./proyectoQuiz_login.php');
     }
 
     function buscarUsuario(){

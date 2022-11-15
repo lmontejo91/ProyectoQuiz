@@ -17,7 +17,7 @@
         
         if(!isset($_SESSION['categoriaPregunta']) || !isset($_SESSION['n_pregunta'])) {
             echo "ERROR";
-            //Aquí luego poner header que te redirija.
+            header('Location: ./proyectoQuiz_inicio.php');
         }
         
         //Declaración de Variables
@@ -34,19 +34,10 @@
 
         $fotoPerfil_menu = $conn->query("SELECT fotoPerfil FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['fotoPerfil'];
 
-        /* echo "<h2>".$pregunta['pregunta']."</h2><br>";
-        echo "<form name='formulario_Text' action='./proyectoQuiz_jugar.php' method='POST'>";
-            echo "<input type='text' id='preguntaForm_text' name='preguntaForm_text'/>";
-            echo "<br><input type='submit' name='enviarPregunta' value='Enviar'/>";
-        echo "</form>"; */
-        
-
-
     ?>
 
-    <!-- bg-image" style="background-image: url('./images/Marauders-Map_BUENA.jpg'); height:100%"> -->
 
-    <section class="vh-100 bg-light">
+    <section class="vh-100 bg-image" style="background-image: url('./images/Marauders-Map.jpg'); height:100%">
         
         <!-- DIV Contenedor -->
         <div class="h-100 row d-flex justify-content-center align-items-center">

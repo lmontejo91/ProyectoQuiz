@@ -85,9 +85,13 @@
     }
       
   }else{
+
+    include 'proyectoQuiz_crearConexion.php';
+
+    $insert_Partida = $conn->query("INSERT INTO partidas (nombre, puntuacion) VALUES ('".$_SESSION['userName']."', '".$_SESSION['puntuacionTotal']."')");
     
     $_SESSION['origen'] = "jugar";
-    //echo "JUEGO FINALIZADO";
+
     unset($_SESSION['preguntasRandom']);
     unset($_SESSION['puntuacionTotal']);
 
