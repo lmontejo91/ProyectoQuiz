@@ -31,7 +31,7 @@
 
                             /* ESTILOS PROPIOS PÁGINAS */
 
-/* ESTILO proyectoQuiz_inicio */
+/* ESTILO proyectoQuiz_login */
 #title_HP{
     font-size: 200%;
     color: #efb810;
@@ -46,12 +46,14 @@
 }
 
 
-/* ESTILO proyectoQuiz_logeado */
-.color_HP{
+/* ESTILO proyectoQuiz_inicio */
+/* .color_HP{
     font-size: 120%;
     color: #efb810;
     font-weight: bolder;
-}
+} */
+
+
 
 
 

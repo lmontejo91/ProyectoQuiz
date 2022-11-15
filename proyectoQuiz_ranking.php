@@ -17,36 +17,14 @@
         
         if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
             echo "Vuelve a Inicio from mostrarEstadisticas";
-            //header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_inicio.php');
+            //header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_login.php');
         } 
-        
-        //Declaración de Variables
 
         //Incluimos el código que crea la conexión 
         include 'proyectoQuiz_crearConexion.php';
 
-        
+        //Guardamos en variables las consultas
         $puntuacionesUsuarios = $conn->query("SELECT nombre, SUM(puntuacion) as puntuacionTotal FROM partidas GROUP BY nombre ORDER BY puntuacionTotal DESC LIMIT 5")->fetchAll();
-
-        /* echo "<table>";
-                echo "<tr>";
-                    echo "<th></th>";
-                    echo "<th>Jugador</th>";
-                    echo "<th>Nivel</th>";
-                    echo "<th>Puntos</th>";
-                echo "</tr>";
-                
-                foreach($puntuacionesUsuarios as $puntuacion){
-                    $usuarioRanking = $conn->query("SELECT nombre, fotoPerfil, nivel FROM jugadores WHERE nombre='".$puntuacion["nombre"]."'")->fetch();
-                    
-                    echo "<tr>";
-                        echo "<td>".$usuarioRanking['fotoPerfil']."</td>";
-                        echo "<td>".$usuarioRanking['nombre']."</td>";
-                        echo "<td>".$puntuacion['puntuacionTotal']."</td>";
-                        echo "<td>".$usuarioRanking['nivel']."</td>";
-                    echo "</tr>"; 
-                }  
-            echo "</table>"; */
 
     ?>
 
@@ -80,9 +58,19 @@
                     </ul>
                 </div>
             </div>
-            
+
+            <!-- DIV Boton Jugar -->
+            <div class="col-xs-12 col-sm-12 col-md-12 pt-4">
+                    <div class="mx-auto col-xs-5 col-sm-5 col-md-4 d-flex align-items-center justify-content-around">
+                        <p class="fs-2 hp-font text-light">¿Tu nombre no aparece en el ranking? !Juega para conseguirlo!</p>
+                        <a href="proyectoQuiz_jugar.php">
+                            <button type="button" class="btn btn-success btn-lg">Jugar</button>
+                        </a>
+                    </div>
+            </div>
+
             <!-- DIV Tabla Ranking -->
-            <div class="container mt-7 mb-5">
+            <div class="container mt-4 mb-5">
                 <div class="mx-7 p-4 bg-white rounded">
                     <table class="table align-middle mb-0 bg-white">
                         <thead class="bg-light">
@@ -99,7 +87,7 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                         <img
-                                            src="<?php echo $usuarioRanking['fotoPerfil'] ?>"
+                                            src="<?php echo "./uploads/".$usuarioRanking['fotoPerfil'] ?>"
                                             alt="" style="width: 45px; height: 45px" class="rounded-circle"/>
                                         <div class="ms-3">
                                             <p class="fw-bold mb-1"><?php echo $usuarioRanking['nombre'] ?></p>
@@ -128,6 +116,7 @@
                     </table>
                 </div>
             </div>
+
         </div>
 
         <!-- DIV Footer -->

@@ -16,20 +16,16 @@
     <?php
         
         if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
-            echo "Vuelve a Inicio from mostrarEstadisticas";
-            //header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_inicio.php');
+            header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_login.php');
         }
-        
-        //Declaración de Variables
 
         //Incluimos el código que crea la conexión 
         include 'proyectoQuiz_crearConexion.php';
 
-        
+        //Guardamos en variables las consultas
         $puntuacion_usuario = $conn->query("SELECT SUM(puntuacion) as puntuacionTotal FROM partidas WHERE nombre='".$_SESSION['userName']."'")->fetch()['puntuacionTotal'];
         $partidas_usuario = $conn->query("SELECT COUNT(*) as num_partidas FROM partidas WHERE nombre='".$_SESSION['userName']."'")->fetch()['num_partidas'];
         $nivel_usuario = $conn->query("SELECT nivel FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['nivel'];
-
 
     ?>
 
@@ -85,12 +81,12 @@
                                         </div>
                                     </div>
                                     <div class="d-flex pt-1">
-                                        <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Chat</button>
+                                        <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Ranking</button>
                                         <button type="button" class="btn btn-primary flex-grow-1">Jugar</button>
                                     </div>
                                 </div>
 
-                                <!-- COLUMNA IMAGEN DE NIVEL DE JUGADOR -->
+                                <!-- DIV Columna con IMAGEN DEL NIVEL DE JUGADOR -->
                                 <div class="flex-shrink-0 ms-1">
                                     <?php if($nivel_usuario == 'Troll'): ?>
                                         <img src="./images/img_niveles/troll.png"
@@ -136,44 +132,3 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </html>
-
-
-
-<!-- <section class="vh-100" style="background-color: #eee;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-12 col-xl-6">
-
-                    <div class="card" style="border-radius: 15px;">
-                        <div class="card-body text-center">
-                            <div class="mt-3 mb-4">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                                    class="rounded-circle img-fluid" style="width: 100px;" />
-                            </div>
-                            <h4 class="mb-2">php echo $_SESSION['userName'] ?></h4>
-                            <p class="text-muted mb-4">@Programmer <span class="mx-2">|</span> <a
-                                href="#!">mdbootstrap.com</a></p>
-                            <button type="button" class="btn btn-primary btn-rounded btn-lg">
-                            Message now
-                            </button>
-                            <div class="d-flex justify-content-between text-center mt-5 mb-2">
-                            <div>
-                                <p class="mb-2 h5">php echo $partidas_usuario ?></p>
-                                <p class="text-muted mb-0">Número de partidas</p>
-                            </div>
-                            <div class="px-3">
-                                <p class="mb-2 h5">php echo $puntuacion_usuario ?></p>
-                                <p class="text-muted mb-0">Puntuacion total</p>
-                            </div>
-                            <div>
-                                <p class="mb-2 h5">4751</p>
-                                <p class="text-muted mb-0">Total Transactions</p>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section> -->

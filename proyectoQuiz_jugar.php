@@ -7,7 +7,7 @@
   }
 
 
-  //IF para actualizar el valor de $_SESSION['puntuacionTotal'] cada vez que se responde una palabra, es decir, la petición viene de POST.
+  //IF para actualizar el valor de $_SESSION['puntuacionTotal'] cada vez que se responde una pregunta, es decir, la petición viene de POST.
   if (($_SERVER["REQUEST_METHOD"] == "POST")){
     if (isset($_POST['enviarPregunta'])){
 
@@ -43,22 +43,17 @@
 
   if(count($_SESSION['preguntasRandom']) < 10){
 
-    //echo "Entra IF<br>";
     do{
       $numero = rand(1,41);
-      /* echo $numero;
-      echo "<br>"; */
       if (!in_array($numero, $_SESSION['preguntasRandom'])) {
         array_push($_SESSION['preguntasRandom'], $numero);
         $numeroRepetido = false;
       }
     }while ($numeroRepetido == true);
-        
-
-  
 
     include 'proyectoQuiz_crearConexion.php';
     $result = $conn->query("SELECT categoria FROM preguntas WHERE preguntaID = $numero")->fetch();
+    
     switch ($result['categoria']) {
       case 'radio':
           $_SESSION['categoriaPregunta'] = 'radio';
@@ -92,9 +87,11 @@
   }else{
     
     $_SESSION['origen'] = "jugar";
-    echo "JUEGO FINALIZADO";
+    //echo "JUEGO FINALIZADO";
     unset($_SESSION['preguntasRandom']);
     unset($_SESSION['puntuacionTotal']);
+
+    header('Location: http://localhost/PROYECTOS/Proyecto%20QUIZ/proyectoQuiz_inicio.php');
   }
     
 ?>
