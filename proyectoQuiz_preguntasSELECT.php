@@ -39,6 +39,8 @@
             $respuestas[$row['respuesta']] = $row['acierto'];
         }
         
+        $fotoPerfil_menu = $conn->query("SELECT fotoPerfil FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['fotoPerfil'];
+
         /* echo "<h2>".$pregunta['pregunta']."</h2>";
         echo "<form name='formulario_Select' action='./proyectoQuiz_jugar.php' method='POST'>";
             echo "<select name='preguntaForm_select'>";
@@ -62,13 +64,13 @@
                 <div class="col-xs-5 col-sm-5 col-md-5 dropdown float-end mt-2 me-4">
                     <button class="btn btn-white float-end" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         <img
-                            src="./images/fotoPerfil01.jpg"
+                            src="<?php echo "./uploads/".$fotoPerfil_menu ?>"
                             alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                     </button>
                     <ul class="col-xs-9 col-sm-9 col-md-9 dropdown-menu px-5 py-3" aria-labelledby="dropdownMenu2">
                         <li class="dropdown-item d-flex flex-row align-items-center justify-content-around">
                             <img
-                                src="./images/fotoPerfil01.jpg"
+                                src="<?php echo "./uploads/".$fotoPerfil_menu ?>"
                                 alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                             <div>
                                 <p class="fw-bold mb-1"><?php echo $_SESSION['userName'] ?></p>

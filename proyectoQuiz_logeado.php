@@ -9,7 +9,6 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
         $_SESSION['origen'] = "login";
         $userName_POST = limpiarDatos($_POST['userName']);
         $password_POST = limpiarDatos($_POST['password']);

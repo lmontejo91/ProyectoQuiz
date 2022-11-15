@@ -25,7 +25,7 @@
         //Guardamos en variables las consultas
         $puntuacion_usuario = $conn->query("SELECT SUM(puntuacion) as puntuacionTotal FROM partidas WHERE nombre='".$_SESSION['userName']."'")->fetch()['puntuacionTotal'];
         $partidas_usuario = $conn->query("SELECT COUNT(*) as num_partidas FROM partidas WHERE nombre='".$_SESSION['userName']."'")->fetch()['num_partidas'];
-        $nivel_usuario = $conn->query("SELECT nivel FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['nivel'];
+        $datos_usuario = $conn->query("SELECT fotoPerfil, nivel FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch();
 
     ?>
 
@@ -39,13 +39,13 @@
                     <div class="col-xs-5 col-sm-5 col-md-5 dropdown float-end mt-2 me-4">
                         <button class="btn btn-white float-end" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                             <img
-                                src="./images/fotoPerfil01.jpg"
+                                src="<?php echo "./uploads/".$datos_usuario['fotoPerfil'] ?>"
                                 alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                         </button>
                         <ul class="col-xs-9 col-sm-9 col-md-9 dropdown-menu px-5 py-3" aria-labelledby="dropdownMenu2">
                             <li class="dropdown-item d-flex flex-row align-items-center justify-content-around">
                                 <img
-                                    src="./images/fotoPerfil01.jpg"
+                                    src="<?php echo "./uploads/".$datos_usuario['fotoPerfil'] ?>"
                                     alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                                 <div>
                                     <p class="fw-bold mb-1"><?php echo $_SESSION['userName'] ?></p>
@@ -69,7 +69,7 @@
                                 <!-- COLUMNA DATOS JUGADOR -->
                                 <div class="flex-grow-1 ms-3">
                                     <h5 class="mb-1"><?php echo $_SESSION['userName'] ?></h5>
-                                    <p class="mb-2 pb-1" style="color: #2b2a2a;"><?php echo $nivel_usuario ?></p>
+                                    <p class="mb-2 pb-1" style="color: #2b2a2a;"><?php echo $datos_usuario['nivel'] ?></p>
                                     <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
                                         <div class="text-center">
                                             <p class="small text-muted mb-1">Número de partidas</p>
@@ -88,22 +88,22 @@
 
                                 <!-- DIV Columna con IMAGEN DEL NIVEL DE JUGADOR -->
                                 <div class="flex-shrink-0 ms-1">
-                                    <?php if($nivel_usuario == 'Troll'): ?>
+                                    <?php if($datos_usuario['nivel'] == 'Troll'): ?>
                                         <img src="./images/img_niveles/troll.png"
                                         alt="Imagen nivel Troll" class="img-fluid"
                                         style="width: 180px; border-radius: 10px;">
                                     <?php endif; ?>
-                                    <?php if($nivel_usuario == 'Muggle'): ?>
+                                    <?php if($datos_usuario['nivel'] == 'Muggle'): ?>
                                         <img src="./images/img_niveles/muggle.jpg"
                                         alt="Imagen nivel Muggle" class="img-fluid"
                                         style="width: 180px; border-radius: 10px;">
                                     <?php endif; ?>
-                                    <?php if($nivel_usuario == 'Wizard'): ?>
+                                    <?php if($datos_usuario['nivel'] == 'Wizard'): ?>
                                         <img src="./images/img_niveles/wizard.jpg"
                                         alt="Imagen nivel Wizard" class="img-fluid"
                                         style="width: 180px; border-radius: 10px;">
                                     <?php endif; ?>
-                                    <?php if($nivel_usuario == 'Auror'): ?>
+                                    <?php if($datos_usuario['nivel'] == 'Auror'): ?>
                                         <img src="./images/img_niveles/auror.png"
                                         alt="Imagen nivel Auror" class="img-fluid"
                                         style="width: 180px; border-radius: 10px;">

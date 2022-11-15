@@ -25,7 +25,7 @@
 
         //Guardamos en variables las consultas
         $puntuacionesUsuarios = $conn->query("SELECT nombre, SUM(puntuacion) as puntuacionTotal FROM partidas GROUP BY nombre ORDER BY puntuacionTotal DESC LIMIT 5")->fetchAll();
-
+        $fotoPerfil_menu = $conn->query("SELECT fotoPerfil FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['fotoPerfil'];
     ?>
 
     <section class="vh-100 bg-image bg-ranking" style="background-image: url('./images/hm_castillo_banderas.jpg'); height:100%">
@@ -38,13 +38,13 @@
                 <div class="col-xs-5 col-sm-5 col-md-5 dropdown float-end mt-2 me-4">
                     <button class="btn btn-white float-end" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         <img
-                            src="./images/fotoPerfil01.jpg"
+                            src="<?php echo "./uploads/".$fotoPerfil_menu ?>"
                             alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                     </button>
                     <ul class="col-xs-9 col-sm-9 col-md-9 dropdown-menu px-5 py-3" aria-labelledby="dropdownMenu2">
                         <li class="dropdown-item d-flex flex-row align-items-center justify-content-around">
                             <img
-                                src="./images/fotoPerfil01.jpg"
+                                src="<?php echo "./uploads/".$fotoPerfil_menu ?>"
                                 alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                             <div>
                                 <p class="fw-bold mb-1"><?php echo $_SESSION['userName'] ?></p>

@@ -20,8 +20,6 @@
             //Aquí luego poner header que te redirija.
         }
         
-        /* print_r($_SESSION['preguntasRandom']);
-        print_r($_SESSION['puntuacionTotal']); */
         //Declaración de Variables
         $pregunta;
 
@@ -32,9 +30,9 @@
         $respuesta = $conn->query("SELECT respuesta FROM respuestas WHERE preguntaID=$_SESSION[n_pregunta]")->fetch()['respuesta'];
         
         $_SESSION['puntosPregunta'] = $pregunta['puntos'];
-        //echo $_SESSION['puntosPregunta'];
         $_SESSION['respuesta_correcta'] = $respuesta;
 
+        $fotoPerfil_menu = $conn->query("SELECT fotoPerfil FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch()['fotoPerfil'];
 
         /* echo "<h2>".$pregunta['pregunta']."</h2><br>";
         echo "<form name='formulario_Text' action='./proyectoQuiz_jugar.php' method='POST'>";
@@ -58,13 +56,13 @@
                 <div class="col-xs-5 col-sm-5 col-md-5 dropdown float-end mt-2 me-4">
                     <button class="btn btn-white float-end" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         <img
-                            src="./images/fotoPerfil01.jpg"
+                            src="<?php echo "./uploads/".$fotoPerfil_menu ?>"
                             alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                     </button>
                     <ul class="col-xs-9 col-sm-9 col-md-9 dropdown-menu px-5 py-3" aria-labelledby="dropdownMenu2">
                         <li class="dropdown-item d-flex flex-row align-items-center justify-content-around">
                             <img
-                                src="./images/fotoPerfil01.jpg"
+                                src="<?php echo "./uploads/".$fotoPerfil_menu ?>"
                                 alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                             <div>
                                 <p class="fw-bold mb-1"><?php echo $_SESSION['userName'] ?></p>

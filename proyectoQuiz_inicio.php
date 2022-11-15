@@ -25,6 +25,9 @@
                                                     WHERE nombre='cris' 
                                                         AND partidaID = (SELECT MAX(partidaID) FROM partidas 
                                                                             WHERE nombre='cris')")->fetch()['puntuacion'];
+
+        $datos_usuario = $conn->query("SELECT fotoPerfil, nivel FROM jugadores WHERE nombre='".$_SESSION['userName']."'")->fetch();
+    
     ?>
 
 
@@ -36,13 +39,13 @@
                     <div class="col-xs-5 col-sm-5 col-md-5 dropdown float-end mt-2 me-4">
                         <button class="btn btn-white float-end" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                             <img
-                                src="./images/fotoPerfil01.jpg"
+                                src="<?php echo "./uploads/".$datos_usuario['fotoPerfil'] ?>"
                                 alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                         </button>
                         <ul class="col-xs-9 col-sm-9 col-md-9 dropdown-menu px-5 py-3" aria-labelledby="dropdownMenu2">
                             <li class="dropdown-item d-flex flex-row align-items-center justify-content-around">
                                 <img
-                                    src="./images/fotoPerfil01.jpg"
+                                    src="<?php echo "./uploads/".$datos_usuario['fotoPerfil'] ?>"
                                     alt="" style="width: 65px; height: 65px" class="rounded-circle"/>
                                 <div>
                                     <p class="fw-bold mb-1"><?php echo $_SESSION['userName'] ?></p>
@@ -100,9 +103,26 @@
                             <p>Has conseguido<span class="d-block"><?php echo $puntuacion_ultimaPartida." puntos" ?></span></p>
                         </div>
                         <div>
-                            <img src="./images/img_niveles/troll.png"
+                            <?php if($datos_usuario['nivel'] == 'Troll'): ?>
+                                <img src="./images/img_niveles/troll.png"
                                 alt="Imagen nivel Troll" class="img-fluid"
                                 style="width: 180px; border-radius: 10px;">
+                            <?php endif; ?>
+                            <?php if($datos_usuario['nivel'] == 'Muggle'): ?>
+                                <img src="./images/img_niveles/muggle.jpg"
+                                alt="Imagen nivel Muggle" class="img-fluid"
+                                style="width: 180px; border-radius: 10px;">
+                            <?php endif; ?>
+                            <?php if($datos_usuario['nivel'] == 'Wizard'): ?>
+                                <img src="./images/img_niveles/wizard.jpg"
+                                alt="Imagen nivel Wizard" class="img-fluid"
+                                style="width: 180px; border-radius: 10px;">
+                            <?php endif; ?>
+                            <?php if($datos_usuario['nivel'] == 'Auror'): ?>
+                                <img src="./images/img_niveles/auror.png"
+                                alt="Imagen nivel Auror" class="img-fluid"
+                                style="width: 180px; border-radius: 10px;">
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endif; ?>

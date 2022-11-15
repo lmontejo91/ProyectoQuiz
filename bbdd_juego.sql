@@ -8,7 +8,7 @@ USE Juego;
 CREATE TABLE jugadores(
 	nombre VARCHAR(20) PRIMARY KEY,
 	contrasena VARCHAR(12) NOT NULL,
-	fotoPerfil VARCHAR(50),
+	fotoPerfil VARCHAR(50) DEFAULT 'profilePhoto_Default.jpg',
 	nivel ENUM('Troll', 'Muggle', 'Wizard', 'Auror') NOT NULL
 );
 
